@@ -16,7 +16,6 @@ uniform struct {
     int chunk_size;
 } ShaderTerrainMesh;
 
-uniform sampler2D alphamap;
 uniform float terrain_scale;
 
 out vec2 terrain_uv;
@@ -52,8 +51,7 @@ void main() {
   
     // Sample heights from the height map and add them to the Z-axis
     float raw_height = texture(ShaderTerrainMesh.heightfield, terrain_uv).x;
-    float mask_alpha = texture(alphamap, terrain_uv).a;
-    float is_land = step(0.01, mask_alpha);
+    float is_land = step(0.01, raw_height);
 
     float finalheight = raw_height * terrain_scale * is_land;
     chunk_position.z += finalheight;
