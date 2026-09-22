@@ -243,6 +243,7 @@ class SMBottomIsland(TerrainSM):
 
     def create_terrain(self, heightmap_path, textures):
         img = cv2.imread(heightmap_path, cv2.IMREAD_UNCHANGED)
+        img = cv2.flip(img, 0)
 
         # Create a texture from a heightfield image.
         tex_heightfield = self.generate_texture_from_img(
