@@ -1,0 +1,3 @@
+[submodule "voronoi_generator"]
+	path = voronoi_generator
+	url = https://github.com/taKana671/voronoi_generator.git
